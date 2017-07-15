@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: userprofile-service
+    
+server:
+  port: 8083
+  context-path: /userprofile
+  session:
+      cookie:
+        name: USER_SESSION
+  
+security:
+  basic:
+    enabled: false
+  oauth2:
+#    client:
+#      clientId: clientA
+#      clientSecret: secreta
+#      accessTokenUri: http://localhost:8080/auth/oauth/token
+#      userAuthorizationUri: http://localhost:8080/auth/oauth/authorize
+#      clientAuthenticationScheme: form
+#      grant-type: implicit
+    resource:
+      userInfoUri: http://localhost:8080/auth/secure/me
+      preferTokenInfo: false
+
+logging:
+  level:
+     org:
+       springframework:
+         security: DEBUG

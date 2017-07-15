@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: euraka-service
+
+server:
+  port: 8084
+    
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false # Get info during startup and update delta during later calls
+  instance:
+    hostname: localhost
