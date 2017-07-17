@@ -1,4 +1,4 @@
-package me.anilkc.userservice;
+package me.anilkc.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -12,11 +12,14 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
   @Override
   public void configure(HttpSecurity http) throws Exception {
+    // @formatter:off
       http
               .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
               .and()
               .authorizeRequests()
               .antMatchers("/secure/**").authenticated()
               .and().anonymous().disable();
+      
+   // @formatter:on
   }
 }

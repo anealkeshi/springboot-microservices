@@ -1,32 +1,44 @@
 server:
-  port: 8081
+  port: 7070
+  context-path: /gateway
 
 spring:
   application:
     name: gateway-service
+
+security:
+  basic:
+    enabled: false
     
 zuul:
   #Service will be mapped under the /api URI
-#  prefix: /api
+#  prefix: /gateway
 #  Uncomment to disable auto-registering all services read from Eureka
-#  ignoredServices: '*'
+  ignoredServices: '*'
+  strip-prefix: true
   routes:
-    userprofile-service:
+    userprofile:
       path: /userprofile/**
+      service-id: userprofile-service
+      strip-prefix: false
       sensitiveHeaders:
     auth-service: 
       path: /auth/**
+      service-id: auth-service
+      strip-prefix: false
       sensitiveHeaders:
 
-#eureka:
-#  client:
-#    registerWithEureka: true
-#    fetchRegistry: true # Get info during startup and update delta during later calls
-#    serviceUrl:
-#      defaultZone: http://localhost:8080/eureka/
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true # Get info during startup and update delta during later calls
+    serviceUrl:
+      defaultZone: http://localhost:9090/eureka/
 
-#security:
-#  oauth2:
-#    resource:
-#      user-info-uri: http://localhost:8081/api/auth/identity/user
-      
+ribbon:
+  eureka:
+    enabled: true
+
+#logging:
+#  level:
+#     org.springframework: DEBUG

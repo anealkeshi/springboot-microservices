@@ -1,13 +1,16 @@
 spring:
   application:
-    name: euraka-service
+    name: eureka-service
 
 server:
-  port: 8084
-    
+  port: 9090
+
+hostName: localhost
+
 eureka:
   client:
     registerWithEureka: false
     fetchRegistry: false # Get info during startup and update delta during later calls
   instance:
-    hostname: localhost
+    hostname: ${hostName}
+    prefer-ip-address: false

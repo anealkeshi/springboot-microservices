@@ -4,7 +4,7 @@ server:
 
 spring:
   application:
-    name: springboot-oauth2-mysql
+    name: auth-service
   datasource:
     url: jdbc:mysql://localhost:3306/springboot_oauth2_mysql?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
     username: root
@@ -23,16 +23,19 @@ security:
   oauth2:
     resource:
       filter-order: 3
+      
+hostName: localhost
+
+eureka:
+  instance:
+    hostname: ${hostName}
+  client:
+    registerWithEureka: true
+    fetchRegistry: true # Get info during startup and update delta during later calls
+    serviceUrl:
+      defaultZone: http://localhost:9090/eureka/
+
 logging:
   level:
-     org:
-       springframework:
-         security: DEBUG
-
-#logging:
-#  level:
-#     org:
-#       springframework:
-#         security:
-#          web:
-#            FilterChainProxy: DEBUG
+#     org.springframework.security.web.FilterChainProxy: DEBUG
+     org.springframework.security: DEBUG

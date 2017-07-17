@@ -11,15 +11,6 @@
 	<groupId>me.anilkc.eureka</groupId>
 	<artifactId>eureka-service</artifactId>
 	<name>eureka-service</name>
-	<build>
-		<finalName>eureka-service</finalName>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>

@@ -72,8 +72,9 @@
 	</dependencyManagement>
 
 	<modules>
-		<module>authentication-service</module>
+		<module>eureka-service</module>
 		<module>gateway-service</module>
-<!-- 		<module>eureka-service</module> -->
+		<module>authentication-service</module>
+		<module>userprofile-service</module>
 	</modules>
 </project>

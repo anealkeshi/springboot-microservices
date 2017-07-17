@@ -3,29 +3,29 @@ spring:
     name: userprofile-service
     
 server:
-  port: 8083
+  port: 6060
   context-path: /userprofile
-  session:
-      cookie:
-        name: USER_SESSION
-  
+
 security:
   basic:
     enabled: false
   oauth2:
-#    client:
-#      clientId: clientA
-#      clientSecret: secreta
-#      accessTokenUri: http://localhost:8080/auth/oauth/token
-#      userAuthorizationUri: http://localhost:8080/auth/oauth/authorize
-#      clientAuthenticationScheme: form
-#      grant-type: implicit
     resource:
       userInfoUri: http://localhost:8080/auth/secure/me
       preferTokenInfo: false
 
-logging:
-  level:
-     org:
-       springframework:
-         security: DEBUG
+hostName: localhost
+
+eureka:
+  instance:
+    hostname: ${hostName}
+    prefer-ip-address: false
+  client:
+    registerWithEureka: true
+    fetchRegistry: true # Get info during startup and update delta during later calls
+    serviceUrl:
+      defaultZone: http://localhost:9090/eureka/
+
+#logging:
+#  level:
+#     org.springframework.security: DEBUG
